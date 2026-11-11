@@ -1,0 +1,35 @@
+name: Publish all three JADE STUDIO sites
+on:
+  push:
+    branches: [main]
+    paths: [website.zip, .github/workflows/pages.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Unpack the verified static websites
+        run: unzip -q website.zip -d public
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy all three sites together
+        id: deployment
+        uses: actions/deploy-pages@v4
