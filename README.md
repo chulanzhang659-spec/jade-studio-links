@@ -1,29 +1,17 @@
-# JADE STUDIO — Website Directions
+# JADE STUDIO
 
-JADE STUDIO 的三个网站版本，现由 GitHub Pages 直接托管。
+[打开完整网站](https://chulanzhang659-spec.github.io/jade-studio-links/)
 
-[打开网站总入口](https://chulanzhang659-spec.github.io/jade-studio-links/)
+唯一公开版本：弧形开头 → 字体压缩 → 流动阶梯作品栏 → 六个业务作品集 → 水波翻阅 → 封面图缩入水流 → 联系方式。
 
-| 版本 | 网站 | 设计方向 |
-| --- | --- | --- |
-| 合并版 · The Studio Journal | [打开原报纸网址](https://chulanzhang659-spec.github.io/jade-studio-links/journal/) | 复古弧形入口 → 文字挤压 → 六个业务作品栏目 → 水波翻阅 → 最后一页的封面图缩入水流；深绿 #474329、浅玉色 #BCB893 |
-| Motion 版 · Moving Ideas | [打开 Motion 版](https://chulanzhang659-spec.github.io/jade-studio-links/motion/) | 弧形开场、文字挤压转场、斜向流动与随机虚实显隐的图片作品流 |
-| 第二版 · Creative Atelier | [打开 Studio Creative](https://chulanzhang659-spec.github.io/jade-studio-links/creative/) | 复古纸张与胶片、空间螺旋、创作方向与明信片 |
+每页作品集右上角都有「联系我们」按钮，直接到达最后的 TEL / EMAIL；返回会回到刚才查看的作品页。联系方式暂用「待补充」占位。
 
-三个站点均已设为公开访问，有链接即可浏览。
+## 发布
 
-`github.com` 是代码仓库地址；实际网页使用 GitHub Pages 的 `github.io` 地址。
+`website.zip` 是唯一网站的静态发布包，首页直接位于根目录。GitHub Actions 解压并发布到 GitHub Pages。
 
-## 发布方式
+原 `journal/`、`motion/`、`creative/` 三个独立发布目录和三站导航已从当前发布包移除。旧版本仍保留在仓库 Git 历史中，可恢复；本地设计源文件未删除。
 
-`website.zip` 包含三个网站的 HTML、CSS、JavaScript、网页图片、字体及相关许可文件。解压后分别位于 `journal/`、`motion/`、`creative/`。不包含登录凭据、私有配置或工作目录。
-
-`.github/workflows/pages.yml` 在发布包更新时，将三个网站一起部署到 GitHub Pages。原 ChatGPT Sites 链接继续保留，但此处的主入口均使用 GitHub Pages。
-
-## 最新作品页
-
-[打开作品集](https://chulanzhang659-spec.github.io/jade-studio-links/journal/work.html?project=portfolio-01)
-
-鼠标向左移动翻到下一页，按住向右拖拽返回。纸张、图片和文字一起变形；最后一页缩小时褪去纸边和文字，只保留中间封面图进入水流。结尾约两次整屏下滑即可到底。下方逐字出现 JADE STUDIO，CONTACT US 在浅玉色广告带上向左滚动。联系方式尚待补充。
+配色：Forest Canopy `#474329` / Pale Jade `#BCB893`。
 
 更新：2026-11-13
