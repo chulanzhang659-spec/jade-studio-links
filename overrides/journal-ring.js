@@ -15,7 +15,7 @@ export async function createJournalRing(host,{onSelect=()=>{},reducedMotion=fals
  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(RING_GREEN,0);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
  const canvas=renderer.domElement;canvas.setAttribute('aria-hidden','true');canvas.style.cssText='display:block;width:100%;height:100%';
  function draw(){
-  const centerX=camera.aspect<.8?1.5:0;
+  const centerX=camera.aspect<.8?.3:0;
   camera.position.set(centerX,0,cameraDistance(camera.aspect));camera.lookAt(centerX,0,0);
   meshes.forEach((mesh,i)=>{
    const position=mesh.geometry.attributes.position,uv=mesh.geometry.attributes.uv;
