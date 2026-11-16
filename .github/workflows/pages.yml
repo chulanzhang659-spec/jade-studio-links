@@ -2,7 +2,7 @@ name: Publish JADE STUDIO
 on:
   push:
     branches: [main]
-    paths: ['jade-site-v9.tar.gz.part-*', .github/workflows/pages.yml]
+    paths: ['jade-site-v9.tar.gz.part-*', 'overrides/**', .github/workflows/pages.yml]
   workflow_dispatch:
 permissions:
   contents: read
