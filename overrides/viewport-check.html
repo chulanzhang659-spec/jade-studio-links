@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>JADE responsive regression</title>
+<style>body{margin:16px;background:#BCB893;color:#ebe4cf;font:12px monospace}iframe{display:block;border:1px solid #474329}pre{white-space:pre-wrap}</style>
+<p id="dimensions"></p><iframe title="Portfolio viewport regression"></iframe><pre id="result">Running…</pre>
+<script>
+const params=new URLSearchParams(location.search),width=Math.max(320,Math.min(1440,Number(params.get('width'))||390)),height=Math.max(400,Math.min(1000,Number(params.get('height'))||844));
+const check=params.get('check')==='layout'?'layout':'contact',frame=document.querySelector('iframe');
+frame.width=width;frame.height=height;frame.src='work.html?project=portfolio-01&check='+check;
+document.querySelector('#dimensions').textContent=width+' × '+height+' · '+check;
+const timer=setInterval(()=>{const report=frame.contentDocument?.querySelector('#'+check+'-check');if(!report)return;document.querySelector('#result').textContent=report.textContent;if(report.dataset.result){document.querySelector('#result').dataset.result=report.dataset.result;clearInterval(timer);}},200);
+</script></html>

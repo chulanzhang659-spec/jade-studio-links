@@ -21,8 +21,7 @@ jobs:
           echo "14f95aa254aa9b62a8c0601abca45fbf0edf6927413dfa57f4ca5c3ff8a8db09  $RUNNER_TEMP/jade-site.tar.gz" | sha256sum --check
           mkdir public
           tar -xzf "$RUNNER_TEMP/jade-site.tar.gz" -C public --strip-components=1
-          cp overrides/journal.css public/journal.css
-          cp overrides/journal-ring-layout.mjs public/journal-ring-layout.mjs
+          cp -R overrides/. public/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: public

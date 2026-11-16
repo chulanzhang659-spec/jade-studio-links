@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#BCB893">
+ <title>联系我们 — JADE STUDIO</title>
+ <script>
+  const params=new URLSearchParams(location.search),id=params.get('project');
+  const from=/^portfolio-0[1-6]$/.test(id||'')?id:'portfolio-01';
+  location.replace(`work.html?view=contact&from=${from}`);
+ </script>
+</head>
+<body><p><a href="work.html?view=contact&from=portfolio-01">前往 CONTACT US / 联系我们</a></p></body>
+</html>

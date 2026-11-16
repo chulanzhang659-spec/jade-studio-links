@@ -1,0 +1,43 @@
+html:has(.contact-page),.contact-page{background:var(--forest);color:var(--jade)}
+.contact-page{min-height:100dvh;overflow-x:hidden}
+.contact-page .work-header{position:relative;z-index:2}
+.correspondence-scene{min-height:calc(100dvh - 90px);display:flex;align-items:center;justify-content:center;padding:0 20px 24px}
+.envelope-scene{position:relative;width:min(1000px,96vw);height:min(780px,calc(100dvh - 110px));min-height:330px;outline-offset:10px;cursor:default;touch-action:pan-y;user-select:none}
+.envelope-webgl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.webgl-ready .envelope-rotor{visibility:hidden;pointer-events:none}
+/* Static closed fallback uses the same warm-olive stock on both sides. */
+.envelope-rotor{position:absolute;left:16%;top:28%;width:68%;height:46%;transform:rotate(-8deg);transform-style:preserve-3d}
+.envelope-face{position:absolute;inset:0;backface-visibility:hidden}
+.envelope-reverse{transform:rotateY(180deg)}
+.envelope-back,.envelope-pocket,.reverse-body{position:absolute;inset:0;background:#969160;box-shadow:0 18px 35px #0003}
+.letter-paper{display:none;background:var(--cream);color:var(--forest)}
+.pocket-left,.pocket-right,.pocket-bottom{position:absolute;inset:0;border:1px solid #BCB89344}
+.pocket-left{clip-path:polygon(0 0,60% 60%,0 100%);background:#999464}
+.pocket-right{clip-path:polygon(100% 0,40% 60%,100% 100%);background:#938e5d}
+.closed-flap{position:absolute;inset:0;background:#969160;clip-path:polygon(0 0,100% 0,50% 70%);filter:drop-shadow(0 3px 2px #0004)}
+.wax-seal{position:absolute;width:18%;aspect-ratio:1;left:41%;top:42%;background:#49452b;border:7px solid #555035;border-radius:48% 52% 45% 55% / 53% 46% 54% 47%;box-shadow:2px 5px 7px #0006,inset 0 0 0 2px #35321f}
+.envelope-address{position:absolute;left:8%;right:8%;bottom:8%;color:#171712}
+.envelope-address dl{margin:0;display:flex;gap:30px}
+.envelope-address dl>div{display:flex;gap:12px;flex:1;align-items:baseline}
+.envelope-address dt{font:400 13px var(--type)}
+.envelope-address dd{flex:1;border-bottom:1px solid #17171266;margin:0}
+.contact-transition{position:fixed;inset:0;z-index:10000;overflow:hidden;background:transparent;min-height:0}
+.contact-transition>.work-header,.contact-transition>.correspondence-scene{position:relative}
+.contact-transition .correspondence-scene{pointer-events:none}
+.contact-backdrop{position:absolute;inset:0;background:var(--forest)}
+.transition-paper{position:fixed;transform-origin:0 0;z-index:8;background:transparent;pointer-events:none;will-change:transform;perspective:1800px}
+.transition-paper .postcard-sheet{position:absolute!important;margin:0!important;max-width:none!important;border-radius:0!important;box-shadow:none!important}
+.fold-panel{position:absolute;inset:0;transform-style:preserve-3d}
+.fold-panel.top{top:-100%;bottom:100%;transform-origin:center bottom}
+.fold-content,.fold-back{position:absolute;inset:0;overflow:hidden;background:var(--cream);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fold-content{box-shadow:0 10px 35px #0002}
+.fold-back{transform:rotateX(180deg);display:flex;align-items:center;justify-content:center;color:var(--forest)}
+.fold-back h2{margin:0;white-space:nowrap;font:700 clamp(45px,5.4vw,91px)/.9 var(--headline);letter-spacing:.015em;filter:url(#ink-wear)}
+.fold-back img{width:100%;height:100%;object-fit:fill}
+.fold-back:after{content:'';position:absolute;inset:0;border:1px solid #BCB89322;pointer-events:none}
+body.contact-transitioning{overflow:hidden!important}
+body.contact-active>:not(.contact-live){visibility:hidden}
+.contact-live .correspondence-scene{pointer-events:auto}
+@media(max-width:760px){.fold-back h2{font-size:clamp(32px,8vw,57px)}}
+@media(max-width:600px){.correspondence-scene{padding:0 8px 12px}.envelope-scene{height:calc(100dvh - 100px);width:96vw}.contact-page .work-header{align-items:center}.envelope-address dl{gap:12px}.envelope-address dt{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.transition-paper{will-change:auto}}

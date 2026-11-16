@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="theme-color" content="#BCB893">
+ <script>if(location.hash==='#portfolio-index')document.documentElement.dataset.entry='portfolio-return';</script>
+ <style>html[data-entry="portfolio-return"] #intro{display:none}</style>
+ <title>JADE STUDIO — Ideas into reality</title>
+ <meta name="description" content="An independent creative atelier. Discover our world, our thoughts and our portfolio archive.">
+ <link rel="preload" href="assets/fonts/libre-caslon-condensed.ttf" as="font" type="font/ttf" crossorigin>
+ <link rel="stylesheet" href="journal.css?v=jade-business-11">
+ <link rel="stylesheet" href="auge-study.css?v=24">
+ <link rel="prefetch" href="work.html">
+ <script defer src="content.js?v=22"></script>
+ <script type="module" src="journal-app.js?v=jade-integrated-12"></script>
+</head>
+<body data-stage="intro">
+ <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="ink-wear" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".19 .34" numOctaves="3" seed="17" result="grain"/><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 -6.4" result="ink"/><feComposite in="SourceGraphic" in2="ink" operator="in"/></filter></defs></svg>
+ <a class="skip" href="#portfolio-index" id="skip-to-work">SKIP TO PORTFOLIOS</a>
+ <section class="intro" id="intro" aria-label="Enter JADE STUDIO">
+  <span class="intro-corner">JADE / CREATIVE ATELIER</span>
+  <div class="film-orbit" id="film-orbit" aria-hidden="true"></div>
+  <button class="studio-entry" id="enter-studio" aria-label="Enter the studio">
+   <span class="entry-kicker">AN INDEPENDENT CREATIVE ATELIER</span>
+   <span class="entry-title"><span><span class="aligned-j">J</span>ADE</span> <span>STUDIO</span></span>
+   <span class="entry-cta">EXPLORE THE ATELIER ↗</span>
+  </button>
+  <button class="pause-intro" id="pause-intro" hidden aria-pressed="false">PAUSE Ⅱ</button>
+  <span class="intro-foot" id="intro-status" aria-live="polite">PREPARING THE ATELIER…</span>
+ </section>
+ <main id="journal" hidden inert>
+  <header class="site-header"><button class="brand" data-return aria-label="JADE STUDIO"><span class="aligned-j">J</span>ADE STUDIO</button><nav aria-label="Studio"><a href="#portfolio-index">PORTFOLIOS ↗</a><button data-open="contact">CONTACT ↗</button><button data-return>← BACK</button></nav></header>
+  <div class="journal-flow" id="journal-flow">
+  <section class="manifesto" id="manifesto" tabindex="-1" aria-labelledby="manifesto-heading">
+   <p class="manifesto-eyebrow">A NOTE FROM THE ATELIER</p>
+   <h1 id="manifesto-heading" class="sr-only">WE FIND WHAT MAKES YOU DISTINCT. WE CREATE WHAT MAKES YOU MEMORABLE.</h1>
+   <div class="manifesto-type" id="manifesto-type" aria-hidden="true"></div>
+   <p class="manifesto-chinese" lang="zh-CN">玉有其声，意有其形。</p>
+   <a class="scroll-prompt" href="#portfolio-index"><span class="scroll-prompt-label" lang="zh-CN">下滑查看作品集</span><span class="scroll-prompt-arrow" aria-hidden="true">↓</span></a>
+  </section>
+  <section class="portfolio-index" id="portfolio-index" aria-labelledby="portfolio-heading">
+   <h2 id="portfolio-heading" class="sr-only">Selected portfolios — six disciplines</h2>
+   <div class="work-ribbon" id="work-ribbon" role="region" aria-label="Six portfolio entrances, illustrated with preview artwork"></div>
+   <div class="studio-lockup">
+    <div class="studio-wordmark">
+     <svg class="studio-logo" viewBox="115 35 700 575" role="img" aria-label="Jade Studio ribbon logo">
+      <defs><filter id="pale-jade-logo" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".25 .25 .25 0 .18 .25 .25 .25 0 .165 .25 .25 .25 0 .02 -3 -3 -3 0 9"/></filter></defs>
+      <image href="assets/jade-logo-source.png" width="886" height="782" filter="url(#pale-jade-logo)"/>
+     </svg>
+     <p class="studio-motto" lang="zh-CN">方寸有形，<br>故事无尽。</p>
+    </div>
+    <div class="studio-introduction"><p class="studio-signature">JADE STUDIO / INDEPENDENT ATELIER</p><p class="studio-description">An independent creative studio shaping distinctive stories through content, film and design.</p><p class="studio-description-zh" lang="zh-CN">独立创意工作室，<br>以内容、影像与设计，创造鲜明表达。</p></div>
+   </div>
+  </section>
+  <footer><span>SIX DISCIPLINES / SELECTED WORK · 精选作品</span><button data-open="contact">LET’S MAKE SOMETHING ↗</button><div class="ribbon-controls"><button id="reverse-ribbon" aria-label="Flowing left to right. Reverse direction">FLOW →</button><button id="pause-ribbon" aria-pressed="false">PAUSE Ⅱ</button></div></footer>
+  </div>
+ </main>
+ <dialog id="story-dialog" aria-labelledby="story-title"><div class="dialog-toolbar"><span>JADE STUDIO / THE ARCHIVE</span><button id="close-dialog" aria-label="Close collection">CLOSE ×</button></div><div id="story-content"></div><button class="back-journal" id="back-journal">← BACK TO THE ARCHIVE</button></dialog>
+ <noscript><style>#intro{display:none}body{overflow:auto}</style><p class="noscript-message">JADE STUDIO — An independent creative atelier. Please enable JavaScript to explore the interactive portfolio.</p></noscript>
+</body>
+</html>
