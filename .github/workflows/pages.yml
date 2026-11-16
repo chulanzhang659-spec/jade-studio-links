@@ -1,8 +1,8 @@
-name: Publish all three JADE STUDIO sites
+name: Publish JADE STUDIO
 on:
   push:
     branches: [main]
-    paths: [website.zip, .github/workflows/pages.yml]
+    paths: ['jade-site-v9.tar.gz.part-*', .github/workflows/pages.yml]
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,8 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
-      - name: Unpack the verified static websites
-        run: unzip -q website.zip -d public
+      - name: Restore and verify the exact Sites v9 release
+        run: |
+          cat jade-site-v9.tar.gz.part-* > "$RUNNER_TEMP/jade-site.tar.gz"
+          echo "14f95aa254aa9b62a8c0601abca45fbf0edf6927413dfa57f4ca5c3ff8a8db09  $RUNNER_TEMP/jade-site.tar.gz" | sha256sum --check
+          mkdir public
+          tar -xzf "$RUNNER_TEMP/jade-site.tar.gz" -C public --strip-components=1
       - uses: actions/upload-pages-artifact@v4
         with:
           path: public
@@ -30,6 +34,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy all three sites together
+      - name: Deploy the complete JADE STUDIO site
         id: deployment
         uses: actions/deploy-pages@v4
