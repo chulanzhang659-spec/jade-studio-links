@@ -33,7 +33,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opac
 /* Portrait screens retain the desktop sequence with room for the complete orbit. */
 @media(max-width:760px){
  .intro{height:100svh;min-height:100svh}
- .film-orbit canvas{transform:translateX(-10%)}
+ .film-orbit canvas{transform:none}
  .studio-entry{left:50%;top:50%;z-index:5;width:min(94vw,420px);max-width:94vw;min-height:160px;justify-content:center;align-items:center;text-align:center}
  .entry-title{display:block;width:100%;font-size:clamp(25px,6.2vw,42px);line-height:.94;text-align:center}
  .entry-kicker,.entry-cta{align-self:center;text-align:center}

@@ -1,6 +1,6 @@
 import * as THREE from './assets/vendor/three.module.min.js';
 import {paperCanvas} from './paper-textures.js?v=mixed-1';
-import {RING_COUNT,RING_GREEN,ringVertex,cameraDistance} from './journal-ring-layout.mjs';
+import {RING_COUNT,RING_GREEN,ringVertex,cameraDistance} from './journal-ring-layout.mjs?v=mobile-ring-2';
 
 export async function createJournalRing(host,{onSelect=()=>{},reducedMotion=false}={}){
  const images=await Promise.all(['ring-grass.webp','ring-paper.webp','ring-embossed.webp'].map(name=>new Promise((resolve,reject)=>{
@@ -15,7 +15,8 @@ export async function createJournalRing(host,{onSelect=()=>{},reducedMotion=fals
  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(RING_GREEN,0);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
  const canvas=renderer.domElement;canvas.setAttribute('aria-hidden','true');canvas.style.cssText='display:block;width:100%;height:100%';
  function draw(){
-  camera.position.set(0,0,cameraDistance(camera.aspect));camera.lookAt(0,0,0);
+  const centerX=camera.aspect<.8?1.5:0;
+  camera.position.set(centerX,0,cameraDistance(camera.aspect));camera.lookAt(centerX,0,0);
   meshes.forEach((mesh,i)=>{
    const position=mesh.geometry.attributes.position,uv=mesh.geometry.attributes.uv;
    for(let n=0;n<position.count;n++)position.setXYZ(n,...ringVertex(i,uv.getX(n),uv.getY(n),seconds,camera.aspect));

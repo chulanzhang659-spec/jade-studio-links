@@ -114,7 +114,7 @@ function showFallback(){
 // before loading entrance-only textures so a slow GPU/network cannot flash it.
 if(location.hash==='#portfolio-index')restorePortfolioPosition();
 try{
- const {createJournalRing}=await import('./journal-ring.js?v=jade-webp-1');
+ const {createJournalRing}=await import('./journal-ring.js?v=jade-webp-2');
  ring=await createJournalRing($('#film-orbit'),{onSelect:selectImage,reducedMotion:reduce.matches});
  if(stage!=='intro')ring.pause();
  $('#intro-status').textContent='SELECT A FRAME / STEP INSIDE THE ATELIER';$('#pause-intro').hidden=reduce.matches;
