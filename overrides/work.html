@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <title>作品集 — JADE STUDIO</title>
+ <link rel="stylesheet" href="wave-transition-study.css?v=30">
+ <link rel="stylesheet" href="portfolio-catalog.css?v=14">
+</head>
+<body>
+ <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="catalog-ink-wear" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".19 .34" numOctaves="3" seed="17" result="grain"/><feColorMatrix in="grain" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 -6.4" result="ink"/><feComposite in="SourceGraphic" in2="ink" operator="in"/></filter></defs></svg>
+ <svg class="paper-wave-defs" width="0" height="0" aria-hidden="true">
+  <filter id="paper-wave-filter" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+   <feImage id="paper-wave-map" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="wave-map"/>
+   <feDisplacementMap id="paper-wave-displacement" in="SourceGraphic" in2="wave-map" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+ </svg>
+ <header class="study-header">
+  <a href="index.html#portfolio-index" aria-label="返回作品集"><span class="aligned-j">J</span>ADE STUDIO</a>
+  <button type="button" id="contact-shortcut" class="contact-shortcut" disabled>联系我们 ↗</button>
+ </header>
+ <main id="paper-view">
+  <article class="paper-shell" aria-label="JADE STUDIO 作品集报纸">
+   <section id="wave-stage" class="wave-stage" aria-label="鼠标向左移动或向左滑动翻页，按住向右拖动返回">
+    <canvas id="wave-canvas"></canvas>
+    <section id="project-catalog" class="catalog-newspaper" aria-labelledby="catalog-title">
+     <header class="catalog-masthead">
+      <p class="catalog-kicker">JADE'S PORTFOLIO / SELECTED WORK</p>
+      <p id="catalog-number" class="catalog-number"></p>
+      <h1 id="catalog-title"></h1>
+      <p id="catalog-zh" class="catalog-zh"></p>
+      <p id="catalog-deck" class="catalog-deck" lang="en"></p>
+     </header>
+     <nav id="catalog-tabs" class="catalog-tabs" role="tablist" aria-label="二级作品分类"></nav>
+     <section id="catalog-panel" class="catalog-panel" role="tabpanel" tabindex="0"></section>
+    </section>
+    <button type="button" class="wave-turn-zone wave-turn-prev" aria-label="上一份作品集"></button>
+    <button type="button" class="wave-turn-zone wave-turn-next" aria-label="下一份作品集"></button>
+    <p class="wave-hint"><span>向左移动 / 滑动翻页 · 按住向右拖回</span><span>SWEEP LEFT TO TURN</span></p>
+   </section>
+  </article>
+ </main>
+ <div id="river-view" hidden>
+  <section id="river-gallery" class="gallery" aria-label="流动作品集">
+   <div class="gallery-sticky"><p class="river-scroll-hint">向下滑动联系我们</p><div class="gallery-field"></div></div>
+  </section>
+  <footer class="river-contact" id="contact">
+   <p class="meeting"><span class="meeting-brand"><span class="aligned-j">J</span>ADE STUDIO</span><span lang="zh-CN">期待与您相遇</span></p>
+   <section aria-labelledby="contact-heading">
+    <h1 id="contact-heading" class="contact-band" aria-label="CONTACT US">
+     <span class="contact-track" aria-hidden="true"><span class="contact-group"><span>CONTACT US</span><span>CONTACT US</span><span>CONTACT US</span><span>CONTACT US</span></span></span>
+    </h1>
+    <p class="contact-chinese">联系我们</p>
+    <dl>
+     <div><dt>TEL <span>电话</span></dt><dd>待补充</dd></div>
+     <div><dt>EMAIL <span>邮箱</span></dt><dd>待补充</dd></div>
+    </dl>
+   </section>
+  </footer>
+ </div>
+ <script src="content.js?v=23"></script>
+ <script src="portfolio-projects.js?v=10"></script>
+ <script type="module" src="portfolio-catalog.mjs?v=11"></script>
+ <script type="module" src="wave-transition-study.mjs?v=36"></script>
+</body>
+</html>
