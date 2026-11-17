@@ -1,5 +1,5 @@
 import {manifestoSVG,manifestoMetrics} from './journal-typography.mjs?v=jade-type-5';
-import {playCompression} from './journal-transition.js?v=jade-type-5';
+import {playCompression} from './journal-transition.js?v=jade-pale-1';
 import {createManifestoMotion} from './manifesto-webgl.mjs?v=1';
 import {createWorkRibbon} from './work-ribbon.mjs?v=9';
 import {workURL} from './portfolio-exit.mjs';
