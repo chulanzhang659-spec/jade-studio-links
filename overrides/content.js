@@ -20,7 +20,7 @@ window.JADE_CONTENT = {
   stories: {
     about: {eyebrow: 'A NOTE FROM THE STUDIO', title: 'A curious spirit.<br>A considered eye.', body: 'JADE STUDIO is an independent online fashion design studio. This journal is a place to share our work, our references, and the details that catch our eye.', note: 'More studio stories will be added here.'},
     invitation: {eyebrow: 'YOU ARE INVITED', title: 'Come a little closer.', body: 'Welcome to JADE STUDIO. Browse the journal, look at the details, and stay for a while.', note: 'An open invitation to our world of fashion.', action: 'EXPLORE SELECTED WORK ↗'},
-    contact: {eyebrow: 'CORRESPONDENCE', title: 'Let’s make<br>something.', body: 'For collaborations, projects and conversations.', note: '+86 19145689058 / notjaded0119@gmail.com'},
+    contact: {eyebrow: 'CORRESPONDENCE', title: 'Let’s make<br>something.', body: 'For collaborations, projects and conversations.', note: '+86 191-4568-9058 / notjaded0119@gmail.com'},
     drape: {eyebrow: '01 / FASHION STUDY', title: 'The Drape Series', image: 'drape', body: 'A visual study of fabric in motion. Ivory folds meet a forest-green silhouette; drawn lines follow the weight and fall of the cloth.', note: 'Illustrative concept — sample imagery and copy for this first edition.'},
     tailoring: {eyebrow: '02 / DETAIL STUDY', title: 'Tailored Nostalgia', image: 'tailoring', body: 'An exploration of familiar shapes through ink, texture and proportion. A closer look at the gestures hidden in a garment.', note: 'Illustrative concept — sample imagery and copy for this first edition.'}
   }
