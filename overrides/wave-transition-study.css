@@ -64,13 +64,12 @@ button,a{color:inherit}
 .gallery-work.carried-paper span{opacity:1;transform:none;white-space:normal;min-width:150px;line-height:1.5}
 .contact-chinese{font-size:clamp(20px,2.2vw,32px);margin:22px 0 60px}
 .river-contact dl{display:flex;justify-content:center;gap:10vw;margin:0}
-.river-contact dl>div{min-width:180px;text-align:left;border-top:1px solid #47432966;padding:22px 0}
+.river-contact dl>div{display:flex;align-items:baseline;gap:16px;min-width:180px;text-align:left;border-top:1px solid #47432966;padding:22px 0}
 .river-contact dt{font-size:clamp(18px,2vw,28px)}
-.river-contact dt span{font-size:.7em;margin-left:16px}
-.river-contact dd{margin:22px 0 0;font-size:16px;opacity:.8}
-.river-contact dd a{font:inherit;text-decoration:none;overflow-wrap:anywhere}
+.river-contact dd{margin:0;font-size:16px;opacity:.8}
+.river-contact dd a{font:inherit;text-decoration:none;white-space:nowrap}
 .river-contact h1 .contact-group>span,.meeting,.contact-chinese,.river-contact dt,.river-contact dd,.study-header a{filter:url(#ink-wear)}
-@media(max-width:600px){.river-contact dl{gap:28px}.river-contact dl>div{min-width:0;flex:1}.meeting{flex-direction:column;align-items:center}.contact-chinese{margin-bottom:42px}}
+@media(max-width:600px){.river-contact dl{width:100%;flex-direction:column;gap:16px}.river-contact dl>div{min-width:0;width:100%;gap:12px}.river-contact dt{min-width:54px;font-size:16px}.river-contact dd{font-size:clamp(12px,3.2vw,15px)}.meeting{flex-direction:column;align-items:center}.contact-chinese{margin-bottom:42px}}
 /* Reserve a real footer row: neither rules, arrows nor hints cover the works. */
 .wave-turn-zone{top:auto;bottom:0;height:40px;width:44px}
 .wave-hint{left:54px;right:54px;bottom:0;height:40px;align-items:center;mix-blend-mode:normal}
