@@ -45,10 +45,10 @@ function element(tag,text,className){
 
 function slug(value){return encodeURIComponent(value).replace(/%/g,'-').toLowerCase();}
 
-function displayTitle(project){
+export function displayTitle(project,category){
  if(project.displayTitle)return project.displayTitle;
  const title=project.title||'作品项目';if(title.includes('｜'))return title;
- const category=project.categories?.[0],type=category?project.secondary?.[category]:'';
+ const categoryId=category?.id||project.categories?.[0],type=categoryId?project.secondary?.[categoryId]:'';
  return type?`${type}｜${title}`:title;
 }
 
@@ -70,9 +70,9 @@ function mediaFor(project,title){
  const fallback=element('div',title,'catalog-cover-fallback');fallback.setAttribute('role','img');fallback.setAttribute('aria-label',title);figure.append(fallback);return figure;
 }
 
-function projectCard(project,index){
+function projectCard(project,index,category){
  const article=element('article',null,'catalog-project');article.dataset.projectId=project.id;
- const title=displayTitle(project);
+ const title=displayTitle(project,category);
  article.append(mediaFor(project,title));
  const copy=element('div',null,'catalog-copy');
  copy.append(element('p',`${String(index+1).padStart(2,'0')} / PROJECT OVERVIEW`,'catalog-index'));
@@ -121,7 +121,7 @@ function renderProjectGrid(panel,group,category,activeTopic=''){
   panel.append(filters);
  }
  const grid=element('div',null,'catalog-grid');
- visible.forEach((project,index)=>grid.append(projectCard(project,index)));
+ visible.forEach((project,index)=>grid.append(projectCard(project,index,category)));
  panel.append(grid);
 }
 

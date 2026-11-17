@@ -37,15 +37,16 @@ window.JADE_PROJECTS = (() => {
  ];
  wechatArticles.forEach(([title,summary,url],index)=>add('jade-wechat-'+String(index+1).padStart(2,'0'),'Jade','portfolio-02','时尚图文',title,'时尚编辑',summary,{topic:'文章',preview:ja('wechat-'+String(index+1).padStart(2,'0')+'.jpg'),url,sourceLabel:'阅读全文 ↗'}));
 
- const video=(index,type,topic,title,summary)=>add('video-'+String(index).padStart(2,'0'),'','portfolio-03',type,title,'视频剪辑',summary,{topic,video:'assets/projects/video/clip-'+String(index).padStart(2,'0')+'.m4v',poster:'assets/projects/video/poster-'+String(index).padStart(2,'0')+'.jpg'});
+ const video=(index,type,topic,title,summary,extra={})=>add('video-'+String(index).padStart(2,'0'),'','portfolio-03',type,title,'视频剪辑',summary,{topic,video:'assets/projects/video/clip-'+String(index).padStart(2,'0')+'.m4v',poster:'assets/projects/video/poster-'+String(index).padStart(2,'0')+'.jpg',...extra});
+ const fashionVideo={categories:['portfolio-03','portfolio-02'],secondary:{'portfolio-03':'口播','portfolio-02':'时尚视频'}};
  video(1,'Vlog','生活','Vlog｜配镜体验','生活方式场景与体验过程剪辑 · 02:02。');
  video(2,'Vlog','美妆','Vlog｜彩妆选品','线下选品与日常场景剪辑 · 02:20。');
- video(3,'口播','时尚','口播｜人物气质与公众形象','人物气质与公众形象的时尚口播。');
- video(4,'口播','时尚','口播｜设计师风格与秀场形象','设计师风格与秀场形象解读。');
- video(5,'口播','时尚','口播｜人物造型与都市着装','人物造型与都市着装观察。');
- video(6,'口播','时尚','口播｜时尚人物与品牌文化','时尚人物与品牌文化口播。');
- video(7,'口播','时尚','口播｜单品选择与个人风格','单品选择与个人风格讨论。');
- video(8,'口播','时尚','口播｜影视服装与流行文化','影视服装与流行文化观察。');
+ video(3,'口播','时尚','口播｜人物气质与公众形象','人物气质与公众形象的时尚口播。',fashionVideo);
+ video(4,'口播','时尚','口播｜设计师风格与秀场形象','设计师风格与秀场形象解读。',fashionVideo);
+ video(5,'口播','时尚','口播｜人物造型与都市着装','人物造型与都市着装观察。',fashionVideo);
+ video(6,'口播','时尚','口播｜时尚人物与品牌文化','时尚人物与品牌文化口播。',fashionVideo);
+ video(7,'口播','时尚','口播｜单品选择与个人风格','单品选择与个人风格讨论。',fashionVideo);
+ video(8,'口播','时尚','口播｜影视服装与流行文化','影视服装与流行文化观察。',fashionVideo);
  video(9,'品牌短片','汽车','品牌短片｜汽车产品','车型亮点与汽车产品体验剪辑。');
  video(10,'品牌短片','汽车','品牌短片｜汽车文化','汽车文化与品牌技术内容剪辑。');
  video(11,'品牌短片','数码','品牌短片｜数码产品','手机功能与数码产品信息剪辑。');
@@ -56,11 +57,11 @@ window.JADE_PROJECTS = (() => {
 
  const sharedRednote='https://www.xiaohongshu.com/discovery/item/6af8227c000000002a02a058?app_platform=ios&app_version=9.54.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CB4WQwTGmU1MZQ7MYjYvjrAHYmMDkcYvXZHuskqJQym6w=&author_share=1&xhsshare=WeixinSession&shareRedId=ODs2REg9Rks2NzUyOTgwNjY1OTo7RktP&apptime=1794760189&share_id=5b0e494137d94031985740a43fd5d215&track_code=4emLndIIb5l';
  add('jade-huadaqian-interview','Jade','portfolio-03','访谈','花大钱｜未济为福','访谈内容','女性成长、自我提升与人生思考。',{topic:'人物与生活',video:ja('huadaqian-interview.m4v'),preview:ja('video-huadaqian-interview.jpg'),mediaFit:'contain',url:sharedRednote,sourceLabel:'观看小红书原视频 ↗',accountURL:'https://xhslink.cn/m/15hYF0ezj8O',accountLabel:'花大钱的小红书主页 ↗'});
- add('jade-ann-runway','Jade','portfolio-03','活动与秀场','Ann的安｜巴黎看秀日记','活动与秀场内容','巴黎时装周看秀现场与幕后记录。',{topic:'时尚',categories:['portfolio-03','portfolio-02'],secondary:{'portfolio-03':'活动与秀场','portfolio-02':'时尚视频'},video:ja('ann-runway.m4v'),preview:ja('video-ann-runway.jpg'),mediaFit:'contain',url:sharedRednote,sourceLabel:'观看小红书原视频 ↗',accountURL:'https://xhslink.cn/o/5LS7J8zegow',accountLabel:'Ann的安的小红书主页 ↗'});
+ add('jade-ann-runway','Jade','portfolio-03','活动与秀场','Ann的安｜巴黎看秀日记','活动与秀场内容','巴黎时装周看秀现场与幕后记录。',{topic:'时尚',video:ja('ann-runway.m4v'),preview:ja('video-ann-runway.jpg'),mediaFit:'contain',url:sharedRednote,sourceLabel:'观看小红书原视频 ↗',accountURL:'https://xhslink.cn/o/5LS7J8zegow',accountLabel:'Ann的安的小红书主页 ↗'});
 
  add('jade-moution','Jade','portfolio-04','品牌故事与语言','MOUTION / 风把我们变轻','创意阐述 / 分镜脚本 / 影调与音乐','品牌影片叙事。',{topic:'品牌影片叙事',preview:ja('moution.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-bonjour','Jade','portfolio-04','系列与传播概念','Bonjour × Herb Live','创意概念 / 旁白 / 分镜','来自山茶花的幸福感。',{preview:ja('bonjour.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 分镜','北纬78°极地琦旅。',{preview:ja('galenic.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
+ add('jade-bonjour','Jade','portfolio-04','系列与传播概念','Bonjour × Herb Live','创意概念 / 旁白 / 分镜','来自山茶花的幸福感。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('bonjour.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
+ add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 分镜','北纬78°极地琦旅。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('galenic.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
  add('jade-shushi','Jade','portfolio-04','品牌故事与语言','疏时','品牌文案 / 产品内容策划','女装品牌文案及小红书内容。',{topic:'品牌文案',preview:ja('brand-shushi-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/9FEuetal0eo'});
  add('jade-wana','Jade','portfolio-04','品牌故事与语言','WANA TRY','产品文案','女性时尚品牌集合与穿搭平台。',{topic:'品牌文案',preview:ja('brand-wana-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/lgdfS2DeTC'});
 
