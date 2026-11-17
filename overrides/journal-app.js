@@ -11,7 +11,11 @@ const content=window.JADE_CONTENT, intro=$('#intro'), main=$('#journal'), enter=
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'), dialog=$('#story-dialog');
 let ring,transition,opener,paused=false,stage='intro';
 const manifestoMotion=createManifestoMotion($('#manifesto'),{isActive:()=>stage==='journal'&&!dialog.open});
-const workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});
+let workRibbon=null;
+function ensureWorkRibbon(){
+ if(!workRibbon)workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});
+ return workRibbon;
+}
 const scrollDrag=createScrollDrag($('#journal-flow'),{isActive:()=>stage==='journal'&&!dialog.open});
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -21,14 +25,14 @@ function renderManifesto(){
  $('#manifesto-type').innerHTML=manifestoSVG(w,h);
  $('.manifesto-chinese').style.top=`${manifestoMetrics(w,h).chineseTop}px`;
  manifestoMotion.refresh();
- workRibbon.refresh();
+ workRibbon?.refresh();
 }
 document.fonts.ready.then(()=>{if(stage==='journal')renderManifesto();});
 function showJournal(){
  transition=null;stage='journal';document.body.dataset.stage=stage;
  intro.hidden=true;intro.inert=true;main.hidden=false;main.inert=false;ring?.pause();
  delete document.documentElement.dataset.entry;
- window.scrollTo({top:0,behavior:'instant'});scrollDrag.reset();renderManifesto();$('#manifesto').focus({preventScroll:true});
+ window.scrollTo({top:0,behavior:'instant'});scrollDrag.reset();ensureWorkRibbon();renderManifesto();$('#manifesto').focus({preventScroll:true});
 }
 function selectImage(selection){
  if(stage!=='intro')return;
@@ -114,7 +118,7 @@ function showFallback(){
 // before loading entrance-only textures so a slow GPU/network cannot flash it.
 if(location.hash==='#portfolio-index')restorePortfolioPosition();
 try{
- const {createJournalRing}=await import('./journal-ring.js?v=jade-webp-3');
+ const {createJournalRing}=await import('./journal-ring.js?v=perf-1');
  ring=await createJournalRing($('#film-orbit'),{onSelect:selectImage,reducedMotion:reduce.matches});
  if(stage!=='intro')ring.pause();
  $('#intro-status').textContent='SELECT A FRAME / STEP INSIDE THE ATELIER';$('#pause-intro').hidden=reduce.matches;
