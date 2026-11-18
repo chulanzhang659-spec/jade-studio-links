@@ -2,7 +2,7 @@
 // Role for 花大钱 and joint ownership of MeanGirls Club confirmed by the user, 2026-11-14.
 window.JADE_PROJECTS = (() => {
  const works=[];
- const jadeBook='assets/projects/jade/jade-portfolio.pdf';
+ const jadeProjectPDF=(file)=>`https://chulanzhang659-spec.github.io/jade-portfolio/${file}.pdf`;
  const pink='https://www.rednote.com/user/profile/563c10f6c2bdeb3a41945f88';
  function add(id,author,category,type,title,role,summary,extra={}){
   works.push({id,author,categories:[category],secondary:{[category]:type},title,role,summary,...extra});
@@ -16,9 +16,9 @@ window.JADE_PROJECTS = (() => {
  add('jade-ann','Jade','portfolio-01','个人博主账号','Ann的安','内容策划与账号运营','时尚、模特与个人风格内容。',{topic:'时尚',displayTitle:'Ann的安｜账号运营',preview:ja('social-ann-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/5LS7J8zegow'});
  add('jade-pink-account','Jade × pink','portfolio-01','个人博主账号','MeanGirls Club','合作账号运营','时尚、穿搭、审美积累与生活方式内容。',{topic:'时尚',displayTitle:'MeanGirls Club｜账号运营',preview:ja('social-meangirls-upload.jpg'),mediaPosition:'50% 0%',url:'https://www.rednote.com/user/profile/59eec82ee8ac2b2988f3a38a'});
 
- add('jade-hoka','Jade','portfolio-02','脚本','HOKA × 恩利','人物内容 / 场景设计 / 视频脚本','人物短片与脚本。',{preview:ja('hoka.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-iro','Jade','portfolio-02','方案','IRO TALK','采访方案 / 分镜设计 / 内容策划','声音、城市与自我。',{preview:ja('iro.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-bosideng','Jade','portfolio-02','方案','BOSIDENG Paris','影像方案 / 拍摄规划 / 整体执行','Like Puff, Like Dance。',{preview:ja('bosideng.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
+ add('jade-hoka','Jade','portfolio-02','脚本','HOKA × 恩利','人物内容 / 场景设计 / 视频脚本','人物短片与脚本。',{preview:ja('hoka.png'),url:ja('hoka.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-iro','Jade','portfolio-02','方案','IRO TALK','采访方案 / 分镜设计 / 内容策划','声音、城市与自我。',{preview:ja('iro.png'),url:jadeProjectPDF('iro'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-bosideng','Jade','portfolio-02','方案','BOSIDENG Paris','影像方案 / 拍摄规划 / 整体执行','Like Puff, Like Dance。',{preview:ja('bosideng.png'),url:jadeProjectPDF('bosideng'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-gucci','Jade','portfolio-02','时尚图文','GUCCI拍豪门大戏，38位戏精上演百年风云','时尚编辑','人物与时装。',{topic:'专题',preview:ja('editorial-gucci.jpg'),url:'http://xhslink.com/o/62M32HuiY6P'});
  add('jade-punk','Jade','portfolio-02','时尚图文','拜见朋克女王：背叛传统，特立独行','时尚编辑','人物与时装。',{topic:'专题',preview:ja('editorial-punk.jpg'),url:'http://xhslink.com/o/AYdYeX3JiKV'});
  add('jade-longchamp','Jade','portfolio-02','时尚图文','引领高智女性潮流，大家为什么都爱它','时尚编辑','趋势与生活。',{topic:'专题',preview:ja('editorial-longchamp.jpg'),url:'http://xhslink.com/o/1lDzrzEdlQX'});
@@ -59,9 +59,9 @@ window.JADE_PROJECTS = (() => {
  add('jade-huadaqian-interview','Jade','portfolio-03','访谈','花大钱｜未济为福','访谈内容','女性成长、自我提升与人生思考。',{topic:'人物与生活',video:ja('huadaqian-interview.m4v'),preview:ja('video-huadaqian-interview.jpg'),mediaFit:'contain',url:sharedRednote,sourceLabel:'观看小红书原视频 ↗',accountURL:'https://xhslink.cn/m/15hYF0ezj8O',accountLabel:'花大钱的小红书主页 ↗'});
  add('jade-ann-runway','Jade','portfolio-03','活动与秀场','Ann的安｜巴黎看秀日记','活动与秀场内容','巴黎时装周看秀现场与幕后记录。',{topic:'时尚',video:ja('ann-runway.m4v'),preview:ja('video-ann-runway.jpg'),mediaFit:'contain',url:sharedRednote,sourceLabel:'观看小红书原视频 ↗',accountURL:'https://xhslink.cn/o/5LS7J8zegow',accountLabel:'Ann的安的小红书主页 ↗'});
 
- add('jade-moution','Jade','portfolio-04','品牌故事与语言','MOUTION / 风把我们变轻','创意阐述 / 分镜脚本 / 影调与音乐','品牌影片叙事。',{topic:'品牌影片叙事',preview:ja('moution.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-bonjour','Jade','portfolio-04','系列与传播概念','Bonjour × Herb Live','创意概念 / 旁白 / 分镜','来自山茶花的幸福感。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('bonjour.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
- add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 分镜','北纬78°极地琦旅。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('galenic.png'),url:jadeBook,sourceLabel:'查看完整作品集 PDF ↗'});
+ add('jade-moution','Jade','portfolio-04','品牌故事与语言','MOUTION / 风把我们变轻','创意阐述 / 分镜脚本 / 影调与音乐','品牌影片叙事。',{topic:'品牌影片叙事',preview:ja('moution.png'),url:jadeProjectPDF('moution'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-bonjour','Jade','portfolio-04','系列与传播概念','Bonjour × Herb Live','创意概念 / 旁白 / 分镜','来自山茶花的幸福感。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('bonjour.png'),url:jadeProjectPDF('bonjour'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 分镜','北纬78°极地琦旅。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('galenic.png'),url:jadeProjectPDF('galenic'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-shushi','Jade','portfolio-04','品牌故事与语言','疏时','品牌文案 / 产品内容策划','女装品牌文案及小红书内容。',{topic:'品牌文案',preview:ja('brand-shushi-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/9FEuetal0eo'});
  add('jade-wana','Jade','portfolio-04','品牌故事与语言','WANA TRY','产品文案','女性时尚品牌集合与穿搭平台。',{topic:'品牌文案',preview:ja('brand-wana-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/lgdfS2DeTC'});
 
