@@ -44,7 +44,7 @@ export function rolledPaperState(pageIndex,progress){
 
 export function sweepDecision(progress){
  const safeProgress=clamp(Number.isFinite(progress)?progress:0,-1,1);
- if(Math.abs(safeProgress)<.35)return {complete:false,target:0,direction:'none'};
+ if(Math.abs(safeProgress)<.45)return {complete:false,target:0,direction:'none'};
  const target=safeProgress<0?-1:1;
  return {complete:true,target,direction:navigationDirection(target)};
 }

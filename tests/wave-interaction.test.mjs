@@ -9,24 +9,24 @@ const source=existsSync(override)?override:resolve(here,'../../jade-source/dist/
 const {sweepDecision}=await import(pathToFileURL(source));
 
 assert.deepEqual(
- sweepDecision(-0.35),
+ sweepDecision(-0.45),
  {complete:true,target:-1,direction:'next'},
- 'a 35% left sweep must advance to the next portfolio',
+ 'a 45% left sweep must advance to the next portfolio',
 );
 assert.deepEqual(
- sweepDecision(0.35),
+ sweepDecision(0.45),
  {complete:true,target:1,direction:'previous'},
- 'a 35% right drag must return to the previous portfolio',
+ 'a 45% right drag must return to the previous portfolio',
 );
 assert.deepEqual(
- sweepDecision(-0.34),
+ sweepDecision(-0.44),
  {complete:false,target:0,direction:'none'},
- 'a 34% left sweep must not turn the page',
+ 'a 44% left sweep must not turn the page',
 );
 assert.deepEqual(
- sweepDecision(0.34),
+ sweepDecision(0.44),
  {complete:false,target:0,direction:'none'},
- 'a 34% right drag must not turn the page',
+ 'a 44% right drag must not turn the page',
 );
 assert.deepEqual(
  sweepDecision(0.18),
