@@ -1,7 +1,7 @@
 import * as THREE from './assets/vendor/three.module.min.js';
-import {normalizePointerVelocity,advanceHoverSweep,sweepDecision,stepSweepTransition,idleSweepExpired,permittedSweep,rolledPaperState} from './wave-drag.mjs?v=2';
+import {normalizePointerVelocity,advanceHoverSweep,sweepDecision,stepSweepTransition,idleSweepExpired,permittedSweep,rolledPaperState} from './wave-drag.mjs?v=3';
 import {pageFrame} from './page-frame.mjs';
-import {createPaperPreview} from './portfolio-catalog.mjs?v=12';
+import {createPaperPreview} from './portfolio-catalog.mjs?v=13';
 import {createGallery} from './river/arc-gallery.js?v=21';
 import {loadArtworks} from './river/artwork.js?v=3';
 import './correspondence-type.mjs';

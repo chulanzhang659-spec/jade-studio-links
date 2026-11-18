@@ -45,6 +45,8 @@ function element(tag,text,className){
 
 function slug(value){return encodeURIComponent(value).replace(/%/g,'-').toLowerCase();}
 
+export function imageLoading(kind){return kind==='preview'?'eager':'lazy';}
+
 export function displayTitle(project,category){
  if(project.displayTitle)return project.displayTitle;
  const title=project.title||'作品项目';if(title.includes('｜'))return title;
@@ -63,7 +65,7 @@ function mediaFor(project,title){
  }
  const preview=safeURL(project.preview||(project.images||[])[0]);
  if(preview){
-  const image=element('img');image.src=preview;image.alt=title;image.loading='lazy';image.decoding='async';
+  const image=element('img');image.src=preview;image.alt=title;image.loading=imageLoading('preview');image.decoding='async';
   image.style.objectPosition=project.mediaPosition||'50% 50%';
   image.style.objectFit=project.mediaFit||'cover';figure.append(image);return figure;
  }
@@ -82,7 +84,7 @@ function projectCard(project,index,category){
  const extra=[...(project.images||[])].map(safeURL).filter(Boolean).filter(src=>src!==safeURL(project.preview));
  if(extra.length){
   const details=element('details',null,'catalog-images');details.append(element('summary','查看完整图集'));
-  for(const src of extra){const image=element('img');image.src=src;image.alt=`${title} 项目图片`;image.loading='lazy';details.append(image);}
+  for(const src of extra){const image=element('img');image.src=src;image.alt=`${title} 项目图片`;image.loading=imageLoading('gallery');details.append(image);}
   copy.append(details);
  }
  const url=safeURL(project.url);
