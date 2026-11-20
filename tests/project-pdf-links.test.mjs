@@ -12,7 +12,7 @@ const expected={
  'jade-bosideng':'https://chulanzhang659-spec.github.io/jade-portfolio/bosideng.pdf',
  'jade-moution':'https://chulanzhang659-spec.github.io/jade-portfolio/moution.pdf',
  'jade-bonjour':'https://chulanzhang659-spec.github.io/jade-portfolio/bonjour.pdf',
- 'jade-galenic':'https://chulanzhang659-spec.github.io/jade-portfolio/galenic.pdf',
+ 'jade-galenic':'assets/projects/jade/galenic-option-proposal.pdf',
 };
 
 for(const [id,url] of Object.entries(expected)){

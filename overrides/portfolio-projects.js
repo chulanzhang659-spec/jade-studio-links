@@ -15,9 +15,19 @@ window.JADE_PROJECTS = (() => {
  add('pink-account','pink','portfolio-01','个人博主账号','屁可Pink','个人账号内容创作','潮玩、动漫、探店与开箱内容。',{topic:'潮玩',displayTitle:'屁可Pink｜账号运营',preview:ja('social-pink-upload.jpg'),mediaPosition:'50% 0%',url:pink});
  add('jade-ann','Jade','portfolio-01','个人博主账号','Ann的安','内容策划与账号运营','时尚、模特与个人风格内容。',{topic:'时尚',displayTitle:'Ann的安｜账号运营',preview:ja('social-ann-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/5LS7J8zegow'});
  add('jade-pink-account','Jade × pink','portfolio-01','个人博主账号','MeanGirls Club','合作账号运营','时尚、穿搭、审美积累与生活方式内容。',{topic:'时尚',displayTitle:'MeanGirls Club｜账号运营',preview:ja('social-meangirls-upload.jpg'),mediaPosition:'50% 0%',url:'https://www.rednote.com/user/profile/59eec82ee8ac2b2988f3a38a'});
+ add('jade-elfu-founder-ip','Jade','portfolio-01','个人博主账号','ELFU｜主理人 IP 策划','主理人定位 / 内容矩阵 / 选题规划','以真实生活、休息哲学与品牌幕后建立主理人个人内容体系。',{topic:'个人 IP',preview:ja('elfu-founder-ip-plan.jpg'),url:ja('elfu-founder-ip-plan.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-louisa-account-plan','Jade','portfolio-01','个人博主账号','朱柒焱 Louisa｜账号规划','账号诊断 / 内容分布 / 商业优化','围绕时尚、美妆、旅行与女性成长规划个人账号内容。',{topic:'账号规划',preview:ja('louisa-account-plan.jpg'),url:ja('louisa-account-plan.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-agan-account-improvement','Jade','portfolio-01','个人博主账号','阿干干｜个人账号改善策划','账号诊断 / 内容矩阵 / 商业价值','从瑜伽、疗愈与文化内容延展女性成长生活方式定位。',{topic:'账号规划',preview:ja('agan-account-improvement.jpg'),url:ja('agan-account-improvement.pdf'),sourceLabel:'查看该项目 PDF ↗'});
 
  add('jade-hoka','Jade','portfolio-02','脚本','HOKA × 恩利','人物内容 / 场景设计 / 视频脚本','人物短片与脚本。',{preview:ja('hoka.png'),url:ja('hoka.pdf'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-jade-dress-storyboard','Jade','portfolio-02','脚本','玉色入夏｜玉碧色丝麻连衣裙','短视频创意 / 分镜脚本 / 道具规划','以玉石、水光与夏日自然光，呈现东方生活美学短片。',{preview:ja('jade-dress-video-storyboard.jpg'),url:ja('jade-dress-video-storyboard.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-bosideng-video-script','Jade','portfolio-02','脚本','波司登｜叠变三合一外套','发布文案 / 口播脚本 / 镜头规划','以天气变化与三种穿法呈现高端机能外套。',{topic:'品牌视频',preview:ja('bosideng-video-script.jpg'),url:ja('bosideng-video-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-zunjie-video-script','Jade','portfolio-02','脚本','尊界典藏大观｜巴黎时装周','人物对谈 / 产品植入 / 分镜脚本','从时装、艺术与东方工艺切入尊界典藏大观。',{topic:'品牌视频',preview:ja('zunjie-video-script.jpg'),url:ja('zunjie-video-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-blue-shirt-script','Jade','portfolio-02','脚本','疏时｜蓝色衬衫制作工坊','工艺叙事 / 分镜 / 道具规划','记录绘稿、染色、刺绣、缝制到成衣完成的全过程。',{topic:'工艺影像',preview:ja('blue-shirt-production-script.jpg'),url:ja('blue-shirt-production-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-galenic-arctic-script','Jade','portfolio-02','脚本','李佳琦 × 科兰黎｜北极溯源大片','纪录片大纲 / 三语台词 / 全流程分镜','以北纬78°、雪藻科研与极地任务串联完整溯源纪录片。',{topic:'纪录片',preview:ja('galenic-arctic-origin-script.jpg'),url:ja('galenic-arctic-origin-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-huawei-freeclip-script','Jade','portfolio-02','脚本','华为 FreeClip｜时装周电子配饰','时装周内容 / 产品口播 / 镜头规划','在夏姿·陈秀场场景中呈现耳机与造型的融合。',{topic:'数码时尚',preview:ja('huawei-freeclip-script.jpg'),url:ja('huawei-freeclip-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-yuzhaolin-script','Jade','portfolio-02','脚本','Vessel.vv × 俞兆林｜万圣节保暖衣','创意脚本 / 产品植入 / 镜头规划','用万圣节“邪修路线”表现保暖衣的日常搭配与功能。',{topic:'品牌视频',preview:ja('yuzhaolin-video-script.jpg'),url:ja('yuzhaolin-video-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-adidas-live-script','Jade','portfolio-02','脚本','阿迪达斯山川里｜抖音逛街 Live','直播流程 / 主持串词 / 嘉宾互动','围绕山川里漫谈、逛店、穿搭及活动体验搭建直播全流程。',{topic:'直播串词',preview:ja('adidas-shanchuanli-live-script.jpg'),url:ja('adidas-shanchuanli-live-script.pdf'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-iro','Jade','portfolio-02','方案','IRO TALK','采访方案 / 分镜设计 / 内容策划','声音、城市与自我。',{preview:ja('iro.png'),url:jadeProjectPDF('iro'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-bosideng','Jade','portfolio-02','方案','BOSIDENG Paris','影像方案 / 拍摄规划 / 整体执行','Like Puff, Like Dance。',{preview:ja('bosideng.png'),url:jadeProjectPDF('bosideng'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-gucci','Jade','portfolio-02','时尚图文','GUCCI拍豪门大戏，38位戏精上演百年风云','时尚编辑','人物与时装。',{topic:'专题',preview:ja('editorial-gucci.jpg'),url:'http://xhslink.com/o/62M32HuiY6P'});
@@ -62,8 +72,10 @@ window.JADE_PROJECTS = (() => {
 
  add('jade-moution','Jade','portfolio-04','品牌故事与语言','MOUTION / 风把我们变轻','创意阐述 / 分镜脚本 / 影调与音乐','品牌影片叙事。',{topic:'品牌影片叙事',preview:ja('moution.png'),url:jadeProjectPDF('moution'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-soft-cool-lady','Jade','portfolio-04','品牌方案','Soft Cool Lady｜夏日职场女性拍摄计划','品牌拍摄方案 / 造型规划 / 场景设计','记录夏日职场女性在高温与高压之间，精致、松弛而自洽的真实状态。',{topic:'品牌拍摄方案',preview:ja('soft-cool-lady-shooting-plan.jpg'),url:ja('soft-cool-lady-shooting-plan.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-shushi-shooting-plan','Jade','portfolio-04','品牌方案','疏时｜光影之间','拍摄概念 / 三幕叙事 / 影调规划','以秋日城市街头、光影与风感裙摆构成一段法式电影叙事。',{topic:'品牌拍摄方案',preview:ja('shushi-shooting-plan.jpg'),url:ja('shushi-shooting-plan.pdf'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-sixmodu-jiang-yiyi','Jade','portfolio-04','品牌方案','SIXMODU × 蒋依依｜乐园之外','创意概念 / 场景规划 / 妆造方向','以少女的灵动、探索与坚韧构建三组明星拍摄场景。',{topic:'明星拍摄企划',preview:ja('sixmodu-jiang-yiyi-shooting-plan.jpg'),url:ja('sixmodu-jiang-yiyi-shooting-plan.pdf'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-bonjour','Jade','portfolio-04','系列与传播概念','Bonjour × Herb Live','创意概念 / 旁白 / 分镜','来自山茶花的幸福感。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('bonjour.png'),url:jadeProjectPDF('bonjour'),sourceLabel:'查看该项目 PDF ↗'});
- add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 分镜','北纬78°极地琦旅。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('galenic.png'),url:jadeProjectPDF('galenic'),sourceLabel:'查看该项目 PDF ↗'});
+ add('jade-galenic','Jade','portfolio-04','系列与传播概念','李佳琦 × 科兰黎','内容路径 / 互动机制 / 影像方向','北纬78°极地琦旅的纪录片、微电影与轻互动传播方案。',{categories:['portfolio-04','portfolio-02'],secondary:{'portfolio-04':'系列与传播概念','portfolio-02':'方案'},preview:ja('galenic-option-proposal.jpg'),url:ja('galenic-option-proposal.pdf'),sourceLabel:'查看该项目 PDF ↗'});
  add('jade-shushi','Jade','portfolio-04','品牌故事与语言','疏时','品牌文案 / 产品内容策划','女装品牌文案及小红书内容。',{topic:'品牌文案',preview:ja('brand-shushi-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/9FEuetal0eo'});
  add('jade-wana','Jade','portfolio-04','品牌故事与语言','WANA TRY','产品文案','女性时尚品牌集合与穿搭平台。',{topic:'品牌文案',preview:ja('brand-wana-upload.jpg'),mediaPosition:'50% 0%',url:'https://xhslink.cn/o/lgdfS2DeTC'});
 
@@ -79,6 +91,7 @@ window.JADE_PROJECTS = (() => {
  zProject('zekki-towel','产品设计','产品设计','SmileyWorld × RichFlower 浴巾','产品设计提案','浴巾图案与产品效果。',['smiley-07','smiley-09','smiley-11']);
  zProject('zekki-package','平面与视觉设计','包装物料','SmileyWorld × RichFlower 包装与物料','包装设计提案','同一浴巾提案的包装延伸。',['smiley-19','smiley-15','smiley-17','smiley-21']);
  zProject('zekki-illustration','平面与视觉设计','时装插画','Fashion Illustration','时装插画','Procreate 时装表现。',['portfolio-62']);
+ add('jade-n21-collection','yuting zheng','portfolio-05','服装设计','N21 COLLECTION｜A Love Letter to Female Body','系列概念 / Look Book / 工艺图','从女性身体与内衣结构出发，完成十套造型及技术图。',{topic:'成衣系列',preview:ja('n21-collection.jpg'),url:ja('n21-collection.pdf'),sourceLabel:'查看该项目 PDF ↗'});
  add('zekki-concept','田泽麒 / Zekki','portfolio-04','系列与传播概念','SmileyWorld × RichFlower 联名概念','系列概念提案','浴巾提案中的项目概述、概念及亮点。',{preview:z('smiley-01'),images:['smiley-03','smiley-04','smiley-05'].map(z)});
  // Portfolio-planning examples intentionally reuse approved source material.
  add('portfolio-design-fashion','田泽麒 / Zekki','portfolio-06','服装作品集','服装作品集｜系列梳理与版式设计','作品集策划与设计','从系列概念、廓形开发到成衣展示的完整作品集组织。',{preview:z('portfolio-18'),images:['portfolio-10','portfolio-13','portfolio-16'].map(z)});

@@ -54,6 +54,15 @@ export function displayTitle(project,category){
  return type?`${type}｜${title}`:title;
 }
 
+export function sourceLinks(project){
+ const links=[];
+ const url=safeURL(project?.url);
+ if(url)links.push({url,label:project.sourceLabel||'查看原作 ↗'});
+ const originalURL=safeURL(project?.originalURL);
+ if(originalURL&&originalURL!==url)links.push({url:originalURL,label:project.originalLabel||'下载原文件 ↗'});
+ return links;
+}
+
 function mediaFor(project,title){
  const figure=element('figure',null,'catalog-media');
  const video=safeURL(project.video);
@@ -87,8 +96,11 @@ function projectCard(project,index,category){
   for(const src of extra){const image=element('img');image.src=src;image.alt=`${title} 项目图片`;image.loading=imageLoading('gallery');details.append(image);}
   copy.append(details);
  }
- const url=safeURL(project.url);
- if(url){const link=element('a',project.sourceLabel||'查看原作 ↗','catalog-source');link.href=url;link.target='_blank';link.rel='noopener noreferrer';copy.append(link);}
+ for(const item of sourceLinks(project)){
+  const link=element('a',item.label,'catalog-source');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';
+  if(item.url===safeURL(project.originalURL))link.download='';
+  copy.append(link);
+ }
  const accountURL=safeURL(project.accountURL);
  if(accountURL){const link=element('a',project.accountLabel||'小红书主页 ↗','catalog-source');link.href=accountURL;link.target='_blank';link.rel='noopener noreferrer';copy.append(link);}
  article.append(copy);return article;
