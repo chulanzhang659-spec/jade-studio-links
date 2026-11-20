@@ -17,7 +17,7 @@ const expectedTaxonomy=[
  ['账号内容与运营',['个人博主账号','品牌账号']],
  ['内容编辑',['时尚视频','时尚图文']],
  ['视频剪辑与后期',['口播','访谈','Vlog','品牌短片','活动与秀场']],
- ['策划',['拍摄企划','脚本','品牌策略与叙事']],
+ ['策划',['方案','脚本']],
  ['设计服务',['平面与视觉设计','服装设计','产品设计']],
  ['作品集策划与设计',['服装作品集','产品作品集']],
 ];
@@ -34,8 +34,9 @@ for(const category of context.window.JADE_CONTENT.portfolios){
  for(const project of items)assert.ok(category.types.includes(project.secondary[category.id]),`${project.id} has an obsolete subsection`);
 }
 const planning=context.window.JADE_CONTENT.portfolios.find(category=>category.id==='portfolio-04');
-assert.deepEqual(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).map(group=>[group.name,group.projects.length]),[['拍摄企划',5],['脚本',9],['品牌策略与叙事',6]]);
-assert.equal(catalogModule.resolveType(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning),'品牌方案'),'拍摄企划');
+assert.deepEqual(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).map(group=>[group.name,group.projects.length]),[['方案',11],['脚本',9]]);
+assert.equal(catalogModule.resolveType(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning),'品牌方案'),'方案');
+for(const oldType of ['拍摄企划','品牌策略与叙事'])assert.equal(catalogModule.resolveType(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning),oldType),'方案','previously shared links must open the merged proposals');
 const scripts=catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).find(group=>group.name==='脚本');
 assert.deepEqual(catalogModule.topicsFor(scripts,planning),[],'scripts must display together without topic filters');
 const runway=byId.get('jade-ann-runway');
@@ -59,14 +60,14 @@ for(const id of ['video-03','video-04','video-05','video-06','video-07','video-0
 for(const id of ['jade-bonjour','jade-galenic']){
  const project=byId.get(id);
  assert.deepEqual(JSON.parse(JSON.stringify(project.categories)),['portfolio-04'],`${id} must appear only once in planning`);
- assert.equal(project.secondary['portfolio-04'],'品牌策略与叙事');
+ assert.equal(project.secondary['portfolio-04'],'方案');
  assert.ok(project.categories.includes('portfolio-04'),`${id} must retain its brand-story placement`);
 }
 
 assert.equal(typeof catalogModule.displayTitle,'function','catalog titles must be derived from the active category');
 assert.equal(
  catalogModule.displayTitle(byId.get('jade-bonjour'),{id:'portfolio-04'}),
- '品牌策略与叙事｜Bonjour × Herb Live',
+ '方案｜Bonjour × Herb Live',
  'a cross-listed project must use the subsection name from the category being viewed',
 );
 

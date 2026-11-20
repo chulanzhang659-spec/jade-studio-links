@@ -1,16 +1,16 @@
 import {ribbonVertexShader,rippleGLSL} from './ribbon-field.mjs';
 // One GPU canvas, shared global deformation field, no individual CSS rotations.
-export async function createRibbonRenderer(host,slots){
+export async function createRibbonRenderer(host,slots,coversReady){
+ const images=await coversReady;
  const THREE=await import('./assets/vendor/three.module.min.js');
  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setClearColor(0x000000,0);
  renderer.domElement.className='ribbon-canvas';renderer.domElement.setAttribute('aria-hidden','true');
  const scene=new THREE.Scene(),camera=new THREE.Camera(),meshes=[],textures=[];
  const geometry=new THREE.PlaneGeometry(1,1,48,64);
- const loader=new THREE.TextureLoader();
  try{
-  for(const slot of slots){
-   const texture=await loader.loadAsync(slot.preview);texture.colorSpace=THREE.SRGBColorSpace;textures.push(texture);
+  for(const image of images){
+   const texture=new THREE.Texture(image);texture.colorSpace=THREE.SRGBColorSpace;texture.needsUpdate=true;textures.push(texture);
   }
  }catch(error){textures.forEach(t=>t.dispose());geometry.dispose();renderer.dispose();throw error;}
  const shared={uSize:{value:new THREE.Vector2()},uMouse:{value:new THREE.Vector2()},uPull:{value:new THREE.Vector2()},uShift:{value:0},uHover:{value:0},uArch:{value:0},uRipple:{value:0},uOrigin:{value:new THREE.Vector2()}};

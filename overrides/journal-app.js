@@ -13,7 +13,7 @@ let ring,transition,opener,paused=false,stage='intro';
 const manifestoMotion=createManifestoMotion($('#manifesto'),{isActive:()=>stage==='journal'&&!dialog.open});
 let workRibbon=null,ribbonLoading=null;
 function ensureWorkRibbon(){
- if(!workRibbon&&!ribbonLoading)ribbonLoading=import('./work-ribbon.mjs?v=10').then(({createWorkRibbon})=>{workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});workRibbon.refresh();}).catch(error=>{ribbonLoading=null;console.error('Portfolio ribbon failed:',error);});
+ if(!workRibbon&&!ribbonLoading)ribbonLoading=import('./work-ribbon.mjs?v=11').then(({createWorkRibbon})=>{workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});workRibbon.refresh();}).catch(error=>{ribbonLoading=null;console.error('Portfolio ribbon failed:',error);});
  return workRibbon;
 }
 const scrollDrag=createScrollDrag($('#journal-flow'),{isActive:()=>stage==='journal'&&!dialog.open});

@@ -1,6 +1,7 @@
 import {smoothValue,loopPosition,clamp,pointerVelocity} from './elastic-field.mjs';
 import {ribbonLayout,hitRibbon,inversePoint} from './ribbon-field.mjs';
-import {createRibbonRenderer} from './ribbon-renderer.mjs';
+import {createRibbonRenderer} from './ribbon-renderer.mjs?v=covers-1';
+import {loadRibbonImage} from './ribbon-images.mjs?v=covers-1';
 import {createLockupRenderer} from './lockup-renderer.mjs';
 import {stepPortfolioMotion} from './portfolio-motion.mjs';
 import {portfolioExit} from './portfolio-exit.mjs';
@@ -12,25 +13,29 @@ export const imageSlots=[
  {id:'portfolio-04',src:null,preview:'assets/second-act/04-planning.jpg',crop:[.5,.5],zoom:1},
  {id:'portfolio-05',src:null,preview:'assets/second-act/05-design.jpg',crop:[.5,.5],zoom:1},
  {id:'portfolio-06',src:null,preview:'assets/second-act/06-portfolio-design.jpg',crop:[.5,.5],zoom:1}
-];
+].map(slot=>({...slot,fallback:slot.preview,preview:slot.preview.replace(/\.jpg$/,'.webp')}));
 export function createWorkRibbon(host,{portfolios,isActive,onSelect}){
  const section=host.closest('.portfolio-index'),lockup=section.querySelector('.studio-lockup');
  const reduce=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover: hover) and (pointer: fine)');
  const track=document.createElement('div');track.className='work-ribbon-track';host.append(track);
+ const imageLoads=[];
  const buttons=imageSlots.map((slot,index)=>{
   const portfolio=portfolios.find(p=>p.id===slot.id)||portfolios[index],button=document.createElement('button');
   button.className='work-ribbon-card';button.dataset.slot=String(index+1);button.setAttribute('aria-label',portfolio.subtitle+' — '+portfolio.types.join('、'));
-  const image=document.createElement('img');image.src=slot.src||slot.preview;image.alt='';image.draggable=false;image.style.objectPosition=(slot.crop[0]*100)+'% '+(slot.crop[1]*100)+'%';
+  const image=document.createElement('img');image.alt='';image.draggable=false;image.style.objectPosition=(slot.crop[0]*100)+'% '+(slot.crop[1]*100)+'%';
   image.style.transform='scale('+(slot.zoom||1)+')';
   const label=document.createElement('span');label.className='ribbon-slot-label';
   const labelPrimary=document.createElement('span');labelPrimary.className='ribbon-slot-label-primary';labelPrimary.textContent=portfolio.title;
   const labelSecondary=document.createElement('span');labelSecondary.className='ribbon-slot-label-secondary';labelSecondary.textContent=portfolio.types.join(' ／ ');
   label.append(labelPrimary,labelSecondary);
   const hint=document.createElement('span');hint.className='ribbon-slot-hint';hint.textContent='点击查看作品集';hint.setAttribute('aria-hidden','true');
-  button.append(image,label,hint);track.append(button);
+  const status=document.createElement('span');status.className='ribbon-cover-status';status.textContent=portfolio.subtitle+' · 封面加载中';
+  button.append(image,label,hint,status);track.append(button);
+  imageLoads.push(loadRibbonImage(image,slot).then(()=>{button.classList.add('cover-ready');return image;}).catch(error=>{status.textContent=portfolio.subtitle+' · 点击查看作品集';throw error;}));
   button.addEventListener('click',event=>{if(event.detail===0)select(index,button);});
   return button;
  });
+ const coversReady=Promise.all(imageLoads);coversReady.catch(()=>{});
  let renderer,loading=false,failed=false,frame=0,last=0,w=0,h=0,offset=0,direction=1,speed=1,paused=false,focused=false,visible=false,mouse=null,rows=[],pending=null;
  const state={width:1,mx:0,my:0,pullX:0,pullY:0,hover:0,arch:0,ripple:0,rippleX:0,rippleY:0,shiftX:0};
  let lockupRenderer,lockupLoading=false,lockupFailed=false,motion={shiftX:0,direction:1},wheel={vx:0,at:0},touch=null,dragged=false;
@@ -77,7 +82,7 @@ export function createWorkRibbon(host,{portfolios,isActive,onSelect}){
    button.style.opacity=exit?String(index===pending.index?exit.selected:exit.others):'';
   });
   if(renderer)renderer.render(rows,state,h);
-  else if(!loading&&!failed){loading=true;createRibbonRenderer(host,imageSlots.map(s=>({...s,preview:s.src||s.preview}))).then(r=>{renderer=r;wake();}).catch(error=>{failed=true;console.warn('Using accessible image ribbon fallback:',error);});}
+  else if(!loading&&!failed){loading=true;createRibbonRenderer(host,imageSlots,coversReady).then(r=>{renderer=r;wake();}).catch(error=>{failed=true;console.warn('Using accessible image ribbon fallback:',error);});}
   host.style.cursor=hover?'pointer':'';
   const lb=lockup.getBoundingClientRect(),lx=mouse?mouse.x-lb.left:lower.mx,ly=mouse?mouse.y-lb.top:lower.my;
   const over=mouse&&lx>=0&&lx<=lb.width&&ly>=0&&ly<=lb.height;

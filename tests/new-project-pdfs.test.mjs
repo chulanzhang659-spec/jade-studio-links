@@ -12,7 +12,7 @@ const expected = [
   {
     id: 'jade-soft-cool-lady',
     category: 'portfolio-04',
-    type: '拍摄企划',
+    type: '方案',
     title: 'Soft Cool Lady｜夏日职场女性拍摄计划',
     pdf: 'soft-cool-lady-shooting-plan.pdf',
     preview: 'soft-cool-lady-shooting-plan.jpg',

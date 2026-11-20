@@ -9,6 +9,8 @@
 .work-ribbon-track{position:absolute;inset:0;overflow:hidden}
 .work-ribbon-card{position:absolute;top:0;left:-2000px;overflow:hidden;text-align:left;background:var(--jade);color:var(--forest);border:0;padding:0;outline-offset:-5px}
 .work-ribbon-card img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ribbon-cover-status{position:absolute;inset:35% 10% auto;text-align:center;font:400 clamp(14px,1.4vw,22px)/1.8 var(--type);color:var(--forest);pointer-events:none}
+.cover-ready .ribbon-cover-status{display:none}
 .ribbon-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 .ribbon-gpu .work-ribbon-card{background:transparent}
 .ribbon-gpu .work-ribbon-card img{opacity:0}

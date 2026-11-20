@@ -20,7 +20,7 @@ export function selectGroups(projects,category){
 
 export function resolveType(groups,requested){
  const names=groups.map(group=>group.name);
- const legacy={'视频脚本':'脚本','图文与专题':'时尚图文','文章概览':'时尚图文','栏目与系列策划':'拍摄企划','方案':'拍摄企划','品牌方案':'拍摄企划','品牌故事与语言':'品牌策略与叙事','系列与传播概念':'品牌策略与叙事'};
+ const legacy={'视频脚本':'脚本','图文与专题':'时尚图文','文章概览':'时尚图文','栏目与系列策划':'方案','拍摄企划':'方案','品牌方案':'方案','品牌策略与叙事':'方案','品牌故事与语言':'方案','系列与传播概念':'方案'};
  if(names.includes(legacy[requested]))return legacy[requested];
  if(names.includes(requested))return requested;
  return groups.find(group=>group.projects.length)?.name||names[0]||'';
