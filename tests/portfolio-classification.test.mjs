@@ -36,6 +36,8 @@ for(const category of context.window.JADE_CONTENT.portfolios){
 const planning=context.window.JADE_CONTENT.portfolios.find(category=>category.id==='portfolio-04');
 assert.deepEqual(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).map(group=>[group.name,group.projects.length]),[['拍摄企划',5],['脚本',9],['品牌策略与叙事',6]]);
 assert.equal(catalogModule.resolveType(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning),'品牌方案'),'拍摄企划');
+const scripts=catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).find(group=>group.name==='脚本');
+assert.deepEqual(catalogModule.topicsFor(scripts,planning),[],'scripts must display together without topic filters');
 const runway=byId.get('jade-ann-runway');
 assert.deepEqual(JSON.parse(JSON.stringify(runway.categories)),['portfolio-03'],'Ann\'s Paris runway diary must appear only under video post-production');
 assert.deepEqual(JSON.parse(JSON.stringify(runway.secondary)),{'portfolio-03':'活动与秀场'},'the runway diary must be classified as event/runway footage');
