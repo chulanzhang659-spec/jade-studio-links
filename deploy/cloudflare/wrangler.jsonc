@@ -3,9 +3,9 @@
   "account_id": "cff170dec40c4f18e79dc7cda94f5e5a",
   "main": "worker.mjs",
   "compatibility_date": "2026-11-20",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
-  "routes": [{"pattern": "chulanzhang.cn", "custom_domain": true}],
+  "routes": [{"pattern": "chulanzhang.cn", "custom_domain": true}, {"pattern": "jade-studio.chulanzhang.cn", "custom_domain": true}],
   "assets": {
     "directory": "../../tmp/site-preview",
     "binding": "ASSETS",

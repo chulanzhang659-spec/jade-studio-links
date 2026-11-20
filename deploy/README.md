@@ -22,14 +22,24 @@ needed by the deployed Worker.
 Public endpoints:
 
 - GitHub: https://chulanzhang659-spec.github.io/jade-studio-links/
-- Cloudflare: https://jade-studio.fbti-bureau.workers.dev/
-- Custom domain: https://chulanzhang.cn/
+- Cloudflare custom domain: https://jade-studio.chulanzhang.cn/
+- Existing apex alias: https://chulanzhang.cn/
 - Tencent: https://fbti-preview-d6gsc6s08060a75ee-1526099639.tcloudbaseapp.com/jade/
 
 Tencent's platform-provided domain may show a test-domain confirmation page.
+The old `jade-studio.fbti-bureau.workers.dev` endpoint and deployment preview URLs
+are disabled. Do not re-enable them when deploying; the project name remains
+`jade-studio`. Cloudflare manages certificates for the custom domains; check HTTPS
+separately from DNS/HTTP before reporting a domain fully ready.
 The separate `jade.chulanzhang.cn` subdomain belongs to the typewriter portfolio;
 preserve its DNS record and do not bind it to this Worker.
 
 After publishing, check `work.html?project=portfolio-04&type=%E8%84%9A%E6%9C%AC`:
 it must show nine scripts, no topic filters, loaded previews, and working individual
 PDF links. Verify at least one proxied PDF returns PDF content, not an HTML notice.
+
+For typography regressions, run `tests/journal-clarity.browser.cjs` and
+`tests/catalog-clarity.browser.cjs` with `JADE_TEST_URL` set to the target base URL
+and Playwright available through Node. The first checks desktop/mobile native SVG
+text after clicking; the second checks sharp catalog content during a small drag
+and confirms a deliberate drag still turns the page. Keep the 45% threshold.

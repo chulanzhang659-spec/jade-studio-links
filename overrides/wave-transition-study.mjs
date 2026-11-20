@@ -10,8 +10,6 @@ import {createRiverEnding} from './river-ending.mjs?v=18';
 const stage=document.querySelector('#wave-stage');
 const canvas=document.querySelector('#wave-canvas');
 const catalogPaper=document.querySelector('#project-catalog');
-const paperWaveDisplacement=document.querySelector('#paper-wave-displacement');
-const paperWaveMap=document.querySelector('#paper-wave-map');
 const DOM_WAVE=true;
 const portfolios=window.JADE_CONTENT.portfolios;
 const params=new URLSearchParams(location.search);
@@ -282,40 +280,22 @@ let buttonSweep=false;
  let pointerX=.45,inkPointerY=.84,pullX=0,pullY=0,lastPointerY=null;
  const smoothMouse=new THREE.Vector2(.45,.84),smoothPull=new THREE.Vector2();
 
-// The live newspaper uses the original hover/drag/wheel state machine below.
-// Only its renderer differs: distort the actual catalog, never the retired cover.
-const warpCanvas=document.createElement('canvas');warpCanvas.width=192;warpCanvas.height=96;
-const warpContext=warpCanvas.getContext('2d'),warpPixels=warpContext.createImageData(192,96);
+// Keep the live newspaper at native resolution throughout a page turn.
+// Reveal the next sheet without rasterizing text/video through an SVG filter.
 let underPaper=null,underPaperIndex=-1;
 function renderDomWave(progress,direction){
- const active=progress>.001,amount=Math.min(progress*3,1)*Math.min(1,(1-progress)/.22);
+ const active=progress>.001;
  stage.classList.toggle('is-wave-active',active);
  const nextIndex=pageIndex+(direction<0?1:-1);
  if(active&&nextIndex>=0&&nextIndex<portfolios.length&&underPaperIndex!==nextIndex){
   underPaper?.remove();underPaper=createPaperPreview(portfolios[nextIndex]);underPaperIndex=nextIndex;stage.prepend(underPaper);
  }
  if(!active){clearDomWave();return;}
- // Port the original paper shader's smooth bulge and wrinkle field to an SVG
- // displacement map so text, photographs and native video all bend together.
- for(let y=0;y<96;y++)for(let x=0;x<192;x++){
-  const u=x/191,v=1-y/95,edge=Math.sin(u*Math.PI),guard=Math.min(1,u/.065,(1-u)/.065);
-  const du=u-smoothMouse.x,dv=v-smoothMouse.y,local=Math.exp(-((du/.28)**2+(dv/.21)**2)*1.5);
-  const distance=Math.max(0,1-progress-(direction<0?u:1-u));
-  const wrinkle=Math.sin(distance*31+(v-pointerY)*10.5)*.58+Math.sin(distance*67-(v-pointerY)*23)*.27+Math.sin(distance*14+(v-pointerY)*41)*.15;
-  const bend=progress*(.18+.82*Math.exp(-distance*3.6))*.55*guard*Math.min(1,(1-progress)/.22);
-  const dx=(direction*amount*.055*(.45+.55*Math.sin(v*Math.PI))*edge+(smoothPull.x*local*.55+du*.34*local)*amount*guard+direction*wrinkle*bend*.012)*stage.clientWidth;
-  const dy=(amount*.034*Math.sin(u*5.8+direction*.7)*edge+(smoothPull.y*local*.55+dv*.42*local)*amount*guard+wrinkle*bend*.014)*stage.clientWidth;
-  const i=(y*192+x)*4;
-  warpPixels.data[i]=Math.max(0,Math.min(255,128-dx/200*255));warpPixels.data[i+1]=Math.max(0,Math.min(255,128+dy/200*255));warpPixels.data[i+2]=128;warpPixels.data[i+3]=255;
- }
- warpContext.putImageData(warpPixels,0,0);paperWaveMap.setAttribute('href',warpCanvas.toDataURL());
- paperWaveDisplacement?.setAttribute('scale',reducedMotion?'0':'200');
- catalogPaper.style.filter=reducedMotion?'':'url(#paper-wave-filter)';
  catalogPaper.style.clipPath=nextIndex>=0&&nextIndex<portfolios.length?(direction<0?`inset(0 ${progress*100}% 0 0)`:`inset(0 0 0 ${progress*100}%)`):'';
 }
 function clearDomWave(){
  underPaper?.remove();underPaper=null;underPaperIndex=-1;catalogPaper.style.clipPath='';
- paperWaveDisplacement?.setAttribute('scale','0');catalogPaper.style.filter='';catalogPaper.style.transform='';catalogPaper.style.transformOrigin='';
+ catalogPaper.style.filter='';catalogPaper.style.transform='';catalogPaper.style.transformOrigin='';
  catalogPaper.classList.remove('is-wave-turning');stage.classList.remove('is-wave-active','is-wave-forward','is-wave-reverse','is-dragging');
 }
 function domWaveTurn(direction){
