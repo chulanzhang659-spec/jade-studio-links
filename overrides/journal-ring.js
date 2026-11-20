@@ -1,13 +1,16 @@
 import * as THREE from './assets/vendor/three.module.min.js';
-import {paperCanvas} from './paper-textures.js?v=mixed-1';
 import {RING_COUNT,RING_GREEN,ringVertex,cameraDistance} from './journal-ring-layout.mjs?v=mobile-ring-2';
 import {ringQuality,shouldRenderRingFrame} from './ring-performance.mjs?v=1';
 
 export async function createJournalRing(host,{onSelect=()=>{},reducedMotion=false}={}){
- const images=await Promise.all(['ring-grass.webp','ring-paper.webp','ring-embossed.webp'].map(name=>new Promise((resolve,reject)=>{
-  const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Ring artwork failed to load: '+name));image.src=new URL('./assets/'+name,import.meta.url).href;
- })));
- const canvases=Array.from({length:RING_COUNT},(_,i)=>paperCanvas(images,i,{text:false}));
+ // Pre-baked from the original paperCanvas artwork: one download, no startup grain generation.
+ const atlas=await new Promise((resolve,reject)=>{
+  const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Ring artwork failed to load'));image.src=new URL('./assets/ring-atlas.webp',import.meta.url).href;
+ });
+ const canvases=Array.from({length:RING_COUNT},(_,i)=>{
+  const canvas=document.createElement('canvas');canvas.width=768;canvas.height=480;
+  canvas.getContext('2d').drawImage(atlas,(i%3)*768,Math.floor(i/3)*480,768,480,0,0,768,480);return canvas;
+ });
  const alpha=canvases.map(c=>c.getContext('2d').getImageData(0,0,c.width,c.height));
  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,.1,240),raycaster=new THREE.Raycaster();

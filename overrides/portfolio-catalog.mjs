@@ -20,7 +20,7 @@ export function selectGroups(projects,category){
 
 export function resolveType(groups,requested){
  const names=groups.map(group=>group.name);
- const legacy={'视频脚本':'脚本','图文与专题':'时尚图文','文章概览':'时尚图文','栏目与系列策划':'方案'};
+ const legacy={'视频脚本':'脚本','图文与专题':'时尚图文','文章概览':'时尚图文','栏目与系列策划':'拍摄企划','方案':'拍摄企划','品牌方案':'拍摄企划','品牌故事与语言':'品牌策略与叙事','系列与传播概念':'品牌策略与叙事'};
  if(names.includes(legacy[requested]))return legacy[requested];
  if(names.includes(requested))return requested;
  return groups.find(group=>group.projects.length)?.name||names[0]||'';
@@ -168,7 +168,9 @@ export function createPaperPreview(category){
 export function mountCatalog(){
  const content=window.JADE_CONTENT,projects=window.JADE_PROJECTS||[];
  const portfolios=content?.portfolios||[];if(!portfolios.length)return;
- const params=new URLSearchParams(location.search),requested=params.get('project')||params.get('from');
+ const params=new URLSearchParams(location.search);
+ if(params.get('project')==='portfolio-02'&&['方案','脚本','视频脚本','栏目与系列策划'].includes(params.get('type'))){params.set('project','portfolio-04');history.replaceState(null,'','work.html?'+params.toString());}
+ const requested=params.get('project')||params.get('from');
  const tabs=document.querySelector('#catalog-tabs'),panel=document.querySelector('#catalog-panel');
  const title=document.querySelector('#catalog-title'),zh=document.querySelector('#catalog-zh'),deck=document.querySelector('#catalog-deck'),number=document.querySelector('#catalog-number');
  let portfolio=portfolios.find(item=>item.id===requested)||portfolios[0];

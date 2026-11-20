@@ -15,9 +15,9 @@ vm.runInContext(await readFile(resolve(overrides,'portfolio-projects.js'),'utf8'
 
 const expectedTaxonomy=[
  ['账号内容与运营',['个人博主账号','品牌账号']],
- ['内容编辑与策划',['时尚视频','时尚图文','方案','脚本']],
+ ['内容编辑',['时尚视频','时尚图文']],
  ['视频剪辑与后期',['口播','访谈','Vlog','品牌短片','活动与秀场']],
- ['品牌策略与叙事',['品牌故事与语言','系列与传播概念','品牌方案']],
+ ['策划',['拍摄企划','脚本','品牌策略与叙事']],
  ['设计服务',['平面与视觉设计','服装设计','产品设计']],
  ['作品集策划与设计',['服装作品集','产品作品集']],
 ];
@@ -28,6 +28,14 @@ assert.deepEqual(
 );
 
 const byId=new Map(context.window.JADE_PROJECTS.map(project=>[project.id,project]));
+for(const category of context.window.JADE_CONTENT.portfolios){
+ const items=context.window.JADE_PROJECTS.filter(project=>project.categories.includes(category.id));
+ assert.equal(new Set(items.map(project=>project.id)).size,items.length,'no repeated project within a top-level section');
+ for(const project of items)assert.ok(category.types.includes(project.secondary[category.id]),`${project.id} has an obsolete subsection`);
+}
+const planning=context.window.JADE_CONTENT.portfolios.find(category=>category.id==='portfolio-04');
+assert.deepEqual(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning).map(group=>[group.name,group.projects.length]),[['拍摄企划',5],['脚本',9],['品牌策略与叙事',6]]);
+assert.equal(catalogModule.resolveType(catalogModule.selectGroups(context.window.JADE_PROJECTS,planning),'品牌方案'),'拍摄企划');
 const runway=byId.get('jade-ann-runway');
 assert.deepEqual(JSON.parse(JSON.stringify(runway.categories)),['portfolio-03'],'Ann\'s Paris runway diary must appear only under video post-production');
 assert.deepEqual(JSON.parse(JSON.stringify(runway.secondary)),{'portfolio-03':'活动与秀场'},'the runway diary must be classified as event/runway footage');
@@ -48,15 +56,15 @@ for(const id of ['video-03','video-04','video-05','video-06','video-07','video-0
 
 for(const id of ['jade-bonjour','jade-galenic']){
  const project=byId.get(id);
- assert.ok(project.categories.includes('portfolio-02'),`${id} must also appear in content editing and planning`);
- assert.equal(project.secondary['portfolio-02'],'方案',`${id} must appear in the planning subsection`);
+ assert.deepEqual(JSON.parse(JSON.stringify(project.categories)),['portfolio-04'],`${id} must appear only once in planning`);
+ assert.equal(project.secondary['portfolio-04'],'品牌策略与叙事');
  assert.ok(project.categories.includes('portfolio-04'),`${id} must retain its brand-story placement`);
 }
 
 assert.equal(typeof catalogModule.displayTitle,'function','catalog titles must be derived from the active category');
 assert.equal(
- catalogModule.displayTitle(byId.get('jade-bonjour'),{id:'portfolio-02'}),
- '方案｜Bonjour × Herb Live',
+ catalogModule.displayTitle(byId.get('jade-bonjour'),{id:'portfolio-04'}),
+ '品牌策略与叙事｜Bonjour × Herb Live',
  'a cross-listed project must use the subsection name from the category being viewed',
 );
 

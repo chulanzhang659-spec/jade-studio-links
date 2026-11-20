@@ -1,7 +1,7 @@
 import {manifestoSVG,manifestoMetrics} from './journal-typography.mjs?v=jade-type-5';
 import {playCompression} from './journal-transition.js?v=jade-pale-1';
 import {createManifestoMotion} from './manifesto-webgl.mjs?v=1';
-import {createWorkRibbon} from './work-ribbon.mjs?v=9';
+
 import {workURL} from './portfolio-exit.mjs';
 import {createScrollDrag} from './journal-scroll.mjs?v=jade-members-7';
 import {createBusinessPanel} from './business-filters.mjs?v=jade-business-8';
@@ -11,9 +11,9 @@ const content=window.JADE_CONTENT, intro=$('#intro'), main=$('#journal'), enter=
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'), dialog=$('#story-dialog');
 let ring,transition,opener,paused=false,stage='intro';
 const manifestoMotion=createManifestoMotion($('#manifesto'),{isActive:()=>stage==='journal'&&!dialog.open});
-let workRibbon=null;
+let workRibbon=null,ribbonLoading=null;
 function ensureWorkRibbon(){
- if(!workRibbon)workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});
+ if(!workRibbon&&!ribbonLoading)ribbonLoading=import('./work-ribbon.mjs?v=10').then(({createWorkRibbon})=>{workRibbon=createWorkRibbon($('#work-ribbon'),{portfolios:content.portfolios,isActive:()=>stage==='journal'&&!dialog.open,onSelect:openPortfolioPage});workRibbon.refresh();}).catch(error=>{ribbonLoading=null;console.error('Portfolio ribbon failed:',error);});
  return workRibbon;
 }
 const scrollDrag=createScrollDrag($('#journal-flow'),{isActive:()=>stage==='journal'&&!dialog.open});
@@ -118,7 +118,7 @@ function showFallback(){
 // before loading entrance-only textures so a slow GPU/network cannot flash it.
 if(location.hash==='#portfolio-index')restorePortfolioPosition();
 try{
- const {createJournalRing}=await import('./journal-ring.js?v=perf-1');
+ const {createJournalRing}=await import('./journal-ring.js?v=perf-2');
  ring=await createJournalRing($('#film-orbit'),{onSelect:selectImage,reducedMotion:reduce.matches});
  if(stage!=='intro')ring.pause();
  $('#intro-status').textContent='SELECT A FRAME / STEP INSIDE THE ATELIER';$('#pause-intro').hidden=reduce.matches;

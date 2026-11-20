@@ -11,9 +11,9 @@ window.JADE_CONTENT = {
   // gallery accepts {src, alt, caption}; an empty list displays a reserved image area.
   portfolios: [
     {id:'portfolio-01',title:'ACCOUNTS',subtitle:'账号内容与运营',image:'drape',status:'PREVIEW ART',body:'Account content & operations',types:['个人博主账号','品牌账号'],tags:['时尚','潮玩','生活方式','整体运营','内容制作支持'],gallery:[]},
-    {id:'portfolio-02',title:'EDITORIAL',subtitle:'内容编辑与策划',image:'tailoring',status:'PREVIEW ART',body:'Content editing & planning',types:['时尚视频','时尚图文','方案','脚本'],tags:['时尚视频','时尚图文','方案','脚本'],gallery:[]},
+    {id:'portfolio-02',title:'EDITORIAL',subtitle:'内容编辑',image:'tailoring',status:'PREVIEW ART',body:'Content editing',types:['时尚视频','时尚图文'],tags:['时尚视频','时尚图文'],gallery:[]},
     {id:'portfolio-03',title:'VIDEO POST-PRODUCTION',subtitle:'视频剪辑与后期',image:'portrait',status:'PREVIEW ART',body:'Video post-production',types:['口播','访谈','Vlog','品牌短片','活动与秀场'],tags:['时尚','潮玩','美妆','生活方式','汽车','数码'],gallery:[]},
-    {id:'portfolio-04',title:'BRAND STORIES',subtitle:'品牌策略与叙事',image:'hero',status:'PREVIEW ART',body:'Brand strategy & storytelling',types:['品牌故事与语言','系列与传播概念','品牌方案'],tags:['服装品牌','美妆品牌','生活方式品牌'],gallery:[]},
+    {id:'portfolio-04',title:'PLANNING',subtitle:'策划',image:'hero',status:'PREVIEW ART',body:'Creative planning & strategy',types:['拍摄企划','脚本','品牌策略与叙事'],tags:['服装品牌','美妆品牌','生活方式品牌'],gallery:[]},
     {id:'portfolio-05',title:'DESIGN',subtitle:'设计服务',image:'tailoring',status:'PREVIEW ART',body:'Design services',types:['平面与视觉设计','服装设计','产品设计'],tags:['品牌视觉','封面与版式','画册','包装物料','系列设计','款式与图案'],gallery:[]},
     {id:'portfolio-06',title:'PORTFOLIO DESIGN',subtitle:'作品集策划与设计',image:'hero',status:'PREVIEW ART',body:'Portfolio planning & design',types:['服装作品集','产品作品集'],tags:['内容策划','项目梳理','叙事组织','排版设计','封面与版式'],gallery:[]}
   ],
